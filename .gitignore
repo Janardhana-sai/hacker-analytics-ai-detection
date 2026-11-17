@@ -1,0 +1,46 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python caches & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Local SQLite databases, scraped personal data & logs (NEVER commit)
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/*.sqlite
+data/*.sqlite3
+data/*.log
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Environment variables, credentials & secrets
+.env
+.env.*
+*.pem
+*.key
+secrets.toml
+.streamlit/secrets.toml
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo

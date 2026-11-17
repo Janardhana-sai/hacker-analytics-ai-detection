@@ -1,0 +1,817 @@
+{
+  "dataset_notice": "Demonstration professional sample profiles for offline mode, competitive analytics, and college walkthroughs. Not live scraped data.",
+  "profiles": [
+    {
+      "username": "chen_wei_algo",
+      "display_name": "Chen Wei",
+      "profile_url": "https://www.hackerrank.com/profile/chen_wei_algo",
+      "description": "International Collegiate Programming Contest (ICPC) World Finalist, Competitive Programming Coach, and Principal Systems Architect. Active HackerRank veteran solving complex graph theory and dynamic programming challenges since 2018.",
+      "country": "Singapore",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Senior competitive programmer demo profile (1,650 problems solved, 6-star gold badges across 4 domains).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 820, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 460, "proficiency": "6 Star"},
+        {"language_name": "Java", "problems_solved": 270, "proficiency": "5 Star"},
+        {"language_name": "C", "problems_solved": 100, "proficiency": "5 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Algorithms (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Data Structures", "skill_level": "Advanced", "verified": true},
+        {"skill_name": "Graph Theory", "skill_level": "Advanced", "verified": false},
+        {"skill_name": "Dynamic Programming", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Algorithms", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Data Structures", "level_or_stars": "6 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Algorithms (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "C++ (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "5", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "1650", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2580", "stat_category": "competitions"},
+        {"stat_name": "Global Leaderboard Rank", "stat_value": "42", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Cut Tree - Dynamic Tree DP' (Hard)", "category": "Challenge"},
+        {"activity": "Ranked #1 in Hack the Interview Global VI", "category": "Contest"},
+        {"activity": "Earned 6th Gold Star in Algorithms Track", "category": "Badge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "alex_grandmaster",
+      "display_name": "Alexander Wright",
+      "profile_url": "https://www.hackerrank.com/profile/alex_grandmaster",
+      "description": "Staff Distributed Systems Engineer at Tier-1 Cloud Infrastructure company. HackerRank Grandmaster with 6 years of continuous algorithm benchmarking, low-latency concurrent systems, and distributed consensus implementation.",
+      "country": "United States",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Staff Distributed Systems Engineer demonstration profile (1,420 problems solved, 2450 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 750, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 390, "proficiency": "6 Star"},
+        {"language_name": "Go", "problems_solved": 180, "proficiency": "5 Star"},
+        {"language_name": "Rust", "problems_solved": 100, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "C++ (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Distributed Algorithms", "skill_level": "Advanced", "verified": true},
+        {"skill_name": "Concurrency", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Linux Shell", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "C++ (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "1420", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2450", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Won 1st place in CodeSprint World Invitational", "category": "Contest"},
+        {"activity": "Completed Lock-free Queue Benchmark challenge", "category": "Challenge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "priya_lead_architect",
+      "display_name": "Priya Natarajan",
+      "profile_url": "https://www.hackerrank.com/profile/priya_lead_architect",
+      "description": "Principal Backend Architect specializing in high-throughput transactional banking platforms, microservices architecture, and SQL query tuning. Frequent open-source contributor and technical mentor.",
+      "country": "India",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Principal Software Architect demonstration profile (980 problems solved, 2210 contest rating).",
+      "programming_languages": [
+        {"language_name": "Java", "problems_solved": 460, "proficiency": "6 Star"},
+        {"language_name": "SQL", "problems_solved": 290, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 150, "proficiency": "5 Star"},
+        {"language_name": "Kotlin", "problems_solved": 80, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Java (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "SQL (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Database Internals", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Java", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "SQL", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "10 Days of Statistics", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Java (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "SQL (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "980", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2210", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved '15 Days of Learning SQL - Final Round'", "category": "Challenge"},
+        {"activity": "Earned SQL 6-Star Master Certificate", "category": "Certificate"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "dmitri_graph_guru",
+      "display_name": "Dmitri Volkov",
+      "profile_url": "https://www.hackerrank.com/profile/dmitri_graph_guru",
+      "description": "Senior Algorithm Researcher and competitive coding veteran. Focused on combinatorial optimization, NP-hard approximation algorithms, and network flow theory.",
+      "country": "Poland",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Algorithm Researcher profile (1,510 problems solved, 2520 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 910, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 420, "proficiency": "6 Star"},
+        {"language_name": "Java", "problems_solved": 180, "proficiency": "5 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Graph Theory", "skill_level": "Advanced", "verified": true},
+        {"skill_name": "Computational Geometry", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Algorithms", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Mathematics", "level_or_stars": "6 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Algorithms (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "1510", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2520", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Maximum Flow with Minimum Cost'", "category": "Challenge"},
+        {"activity": "Ranked #3 in Weekly Algorithm Marathon", "category": "Contest"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "fatima_quant_trader",
+      "display_name": "Fatima Al-Mansoori",
+      "profile_url": "https://www.hackerrank.com/profile/fatima_quant_trader",
+      "description": "Lead Quantitative Researcher & High Frequency Trading Strategist. Specialized in mathematical modeling, stochastic calculus, ultra-low-latency execution in modern C++, and statistical arbitrage.",
+      "country": "United Arab Emirates",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Quant Researcher profile (1,290 problems solved, 2410 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 680, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 410, "proficiency": "6 Star"},
+        {"language_name": "SQL", "problems_solved": 200, "proficiency": "5 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Mathematics (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "C++ (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Statistical Arbitrage", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Mathematics", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Python (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "1290", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2410", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Matrix Exponentiation for Fibonacci Variants'", "category": "Challenge"},
+        {"activity": "Ranked in Top 0.5% in Global CodeSprint", "category": "Contest"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "ananya_crypto_eng",
+      "display_name": "Ananya Deshmukh",
+      "profile_url": "https://www.hackerrank.com/profile/ananya_crypto_eng",
+      "description": "Senior Cryptography & Blockchain Protocols Engineer. HackerRank enthusiast since 2019, specializing in elliptic curve cryptography, zero-knowledge proofs, and secure multiparty computation.",
+      "country": "India",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Cryptography Engineer profile (1,120 problems solved, 2330 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 540, "proficiency": "6 Star"},
+        {"language_name": "Rust", "problems_solved": 290, "proficiency": "5 Star"},
+        {"language_name": "Python", "problems_solved": 210, "proficiency": "5 Star"},
+        {"language_name": "Go", "problems_solved": 80, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Cryptography & Number Theory", "skill_level": "Advanced", "verified": true},
+        {"skill_name": "C++ (Advanced)", "skill_level": "Verified", "verified": true}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Mathematics", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "C++ (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "1120", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2330", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Miller-Rabin Primality Test'", "category": "Challenge"},
+        {"activity": "Earned Gold Medal in Cryptography Hackathon", "category": "Contest"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "sophia_data_scientist",
+      "display_name": "Dr. Sophia Chen",
+      "profile_url": "https://www.hackerrank.com/profile/sophia_data_scientist",
+      "description": "Lead AI/ML Research Scientist with a Ph.D. in Computer Science. Focus on NLP transformers, statistical inference, and large-scale data engineering. 5+ years active problem solving on HackerRank.",
+      "country": "Canada",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Lead AI/ML Research Scientist profile (740 problems solved, 2090 contest rating).",
+      "programming_languages": [
+        {"language_name": "Python", "problems_solved": 480, "proficiency": "6 Star"},
+        {"language_name": "SQL", "problems_solved": 190, "proficiency": "5 Star"},
+        {"language_name": "R", "problems_solved": 70, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Python (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "SQL (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Statistics & Probability", "skill_level": "Advanced", "verified": true},
+        {"skill_name": "Machine Learning", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Python", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "10 Days of Statistics", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "SQL", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Python (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "SQL (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "740", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2090", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Document Classification with Naive Bayes'", "category": "Challenge"},
+        {"activity": "Completed Advanced Correlation Analysis", "category": "Challenge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "viktor_systems_core",
+      "display_name": "Viktor Lindqvist",
+      "profile_url": "https://www.hackerrank.com/profile/viktor_systems_core",
+      "description": "Senior Operating Systems & Hypervisor Engineer. Specializes in low-level memory allocators, cache-coherent protocols, and POSIX shell automation.",
+      "country": "Sweden",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Systems Core Engineer profile (810 problems solved, 2180 contest rating).",
+      "programming_languages": [
+        {"language_name": "C", "problems_solved": 390, "proficiency": "6 Star"},
+        {"language_name": "C++", "problems_solved": 240, "proficiency": "5 Star"},
+        {"language_name": "Bash", "problems_solved": 180, "proficiency": "5 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Intermediate)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "C (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Linux Shell Scripting", "skill_level": "Advanced", "verified": true}
+      ],
+      "badges": [
+        {"title": "C", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Linux Shell", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "C (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Problem Solving (Intermediate)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "810", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2180", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Sed Command - Advanced Pattern Space'", "category": "Challenge"},
+        {"activity": "Completed Custom Malloc Implementation challenge", "category": "Challenge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "lucas_kernel_hacker",
+      "display_name": "Lucas Oliveira",
+      "profile_url": "https://www.hackerrank.com/profile/lucas_kernel_hacker",
+      "description": "Embedded Firmware & Embedded Linux Engineer. Heavy terminal user, regular contributor to device driver subsystems, and longtime HackerRank Linux track mentor.",
+      "country": "Brazil",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Embedded Firmware Engineer profile (780 problems solved, 2020 contest rating).",
+      "programming_languages": [
+        {"language_name": "C", "problems_solved": 380, "proficiency": "6 Star"},
+        {"language_name": "Bash", "problems_solved": 240, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 160, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Linux Shell (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "C (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Embedded Systems", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Linux Shell", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Linux Shell (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "C (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "780", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2020", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Awk - Multidimensional Array Aggregation'", "category": "Challenge"},
+        {"activity": "Earned 6-Star Gold Badge in Linux Shell Track", "category": "Badge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "zoe_robotics_ai",
+      "display_name": "Zoe Vance",
+      "profile_url": "https://www.hackerrank.com/profile/zoe_robotics_ai",
+      "description": "Robotics Vision & Simultaneous Localization and Mapping (SLAM) Engineer. Competes regularly in HackerRank AI and Algorithm challenges to optimize point-cloud registration.",
+      "country": "Australia",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Robotics & Perception Engineer profile (950 problems solved, 2260 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 510, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 340, "proficiency": "5 Star"},
+        {"language_name": "C", "problems_solved": 100, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Computer Vision", "skill_level": "Advanced", "verified": true},
+        {"skill_name": "C++ (Advanced)", "skill_level": "Verified", "verified": true}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Artificial Intelligence", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "C++ (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "950", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2260", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'A* Search with Dynamic Obstacle Avoidance'", "category": "Challenge"},
+        {"activity": "Ranked in Top 1% in Bot Building AI Sprint", "category": "Contest"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "clara_fintech_lead",
+      "display_name": "Clara Dupont",
+      "profile_url": "https://www.hackerrank.com/profile/clara_fintech_lead",
+      "description": "Staff Fintech Engineer specializing in ISO 20022 message orchestration, payment gateways, and resilient Java enterprise backends. Active technical contributor since 2017.",
+      "country": "France",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Staff Fintech Engineer profile (890 problems solved, 2150 contest rating).",
+      "programming_languages": [
+        {"language_name": "Java", "problems_solved": 450, "proficiency": "6 Star"},
+        {"language_name": "SQL", "problems_solved": 280, "proficiency": "5 Star"},
+        {"language_name": "Python", "problems_solved": 160, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Java (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "SQL (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Problem Solving (Intermediate)", "skill_level": "Verified", "verified": true}
+      ],
+      "badges": [
+        {"title": "Java", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "SQL", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Java (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "SQL (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "890", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2150", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Deadlock Detection in Multi-Account Transfers'", "category": "Challenge"},
+        {"activity": "Earned Java 6-Star Master Achievement", "category": "Badge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "kenji_infra_sre",
+      "display_name": "Kenji Takahashi",
+      "profile_url": "https://www.hackerrank.com/profile/kenji_infra_sre",
+      "description": "Principal SRE & Infrastructure Architect at high-scale e-commerce platform. Author of distributed failover playbooks and Linux kernel profiling tools.",
+      "country": "Japan",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Principal SRE profile (710 problems solved, 1980 contest rating).",
+      "programming_languages": [
+        {"language_name": "Bash", "problems_solved": 290, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 240, "proficiency": "5 Star"},
+        {"language_name": "Go", "problems_solved": 180, "proficiency": "5 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Linux Shell (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Python (Basic)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Reliability Engineering", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Linux Shell", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "4 Stars", "details": "Silver Badge"}
+      ],
+      "certificates": [
+        {"title": "Linux Shell (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Python (Basic)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "710", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "1980", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Grep - Complex Multiline Inverted Expressions'", "category": "Challenge"},
+        {"activity": "Completed Automated Infrastructure Health Assessment", "category": "Challenge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "carlos_compiler_dev",
+      "display_name": "Carlos Mendoza",
+      "profile_url": "https://www.hackerrank.com/profile/carlos_compiler_dev",
+      "description": "Compiler Optimization Engineer working on LLVM backend code generation, vectorization, and AST transformations. 6+ years practicing functional and imperative challenges on HackerRank.",
+      "country": "Spain",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Compiler Engineer profile (840 problems solved, 2120 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 490, "proficiency": "6 Star"},
+        {"language_name": "Haskell", "problems_solved": 190, "proficiency": "5 Star"},
+        {"language_name": "Python", "problems_solved": 160, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "C++ (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Functional Programming", "skill_level": "Advanced", "verified": true}
+      ],
+      "badges": [
+        {"title": "C++", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Functional Programming", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "C++ (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "840", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "2120", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Recursive Descent Parser with Monadic Error Handling'", "category": "Challenge"},
+        {"activity": "Earned Functional Programming Gold Badge", "category": "Badge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "liam_data_engineer",
+      "display_name": "Liam O'Connor",
+      "profile_url": "https://www.hackerrank.com/profile/liam_data_engineer",
+      "description": "Senior Big Data Pipeline Engineer specializing in Apache Spark, Apache Kafka, lakehouse architectures, and complex SQL window analytics.",
+      "country": "Ireland",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Senior Big Data Engineer profile (680 problems solved, 1970 contest rating).",
+      "programming_languages": [
+        {"language_name": "SQL", "problems_solved": 340, "proficiency": "6 Star"},
+        {"language_name": "Python", "problems_solved": 210, "proficiency": "5 Star"},
+        {"language_name": "Scala", "problems_solved": 130, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "SQL (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Python (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Data Warehousing", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "SQL", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "4 Stars", "details": "Silver Badge"}
+      ],
+      "certificates": [
+        {"title": "SQL (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Python (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "680", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "1970", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Rolling Window Aggregations with Session Timeouts'", "category": "Challenge"},
+        {"activity": "Completed SQL Advanced Certification Assessment", "category": "Certificate"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "hannah_sec_analyst",
+      "display_name": "Hannah Schmidt",
+      "profile_url": "https://www.hackerrank.com/profile/hannah_sec_analyst",
+      "description": "Lead Application Security Architect & Penetration Tester. Uses HackerRank challenges to analyze edge-case input handling, memory safety, and secure regex sanitization.",
+      "country": "Germany",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Lead Application Security Architect profile (590 problems solved, 1890 contest rating).",
+      "programming_languages": [
+        {"language_name": "Python", "problems_solved": 290, "proficiency": "5 Star"},
+        {"language_name": "Bash", "problems_solved": 180, "proficiency": "5 Star"},
+        {"language_name": "SQL", "problems_solved": 120, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Python (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Linux Shell (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Secure Coding", "skill_level": "Advanced", "verified": true}
+      ],
+      "badges": [
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Linux Shell", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "SQL", "level_or_stars": "4 Stars", "details": "Silver Badge"}
+      ],
+      "certificates": [
+        {"title": "Python (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Linux Shell (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "590", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "1890", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Regex - Catastrophic Backtracking Prevention'", "category": "Challenge"},
+        {"activity": "Earned Verified Security Scripting Badge", "category": "Badge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "marcus_fullstack_dev",
+      "display_name": "Marcus Sterling",
+      "profile_url": "https://www.hackerrank.com/profile/marcus_fullstack_dev",
+      "description": "Senior Full-Stack Engineering Lead specializing in Next.js, Node.js, GraphQL, and modern TypeScript ecosystems. 4+ years of consistent algorithm and REST API problem solving.",
+      "country": "United Kingdom",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Senior Full-Stack Engineering Lead profile (620 problems solved, 1940 contest rating).",
+      "programming_languages": [
+        {"language_name": "JavaScript", "problems_solved": 310, "proficiency": "5 Star"},
+        {"language_name": "Python", "problems_solved": 190, "proficiency": "5 Star"},
+        {"language_name": "SQL", "problems_solved": 120, "proficiency": "4 Star"}
+      ],
+      "skills": [
+        {"skill_name": "JavaScript (Intermediate)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Node.js (Intermediate)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Problem Solving (Intermediate)", "skill_level": "Verified", "verified": true}
+      ],
+      "badges": [
+        {"title": "JavaScript", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Problem Solving", "level_or_stars": "4 Stars", "details": "Silver Badge"}
+      ],
+      "certificates": [
+        {"title": "JavaScript (Intermediate)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Node.js (Intermediate)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "620", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "1940", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Solved 'Asynchronous Promise Pool with Concurrency Limit'", "category": "Challenge"},
+        {"activity": "Earned JavaScript 5-Star Gold Badge", "category": "Badge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "aarav_py_dev",
+      "display_name": "Aarav Sharma",
+      "profile_url": "https://www.hackerrank.com/profile/aarav_py_dev",
+      "description": "Backend Software Developer focusing on algorithms, Python microservices, and SQL schema optimization.",
+      "country": "India",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Backend Python Developer demo profile (264 problems solved, 1685 contest rating).",
+      "programming_languages": [
+        {"language_name": "Python", "problems_solved": 142, "proficiency": "5 Star"},
+        {"language_name": "SQL", "problems_solved": 68, "proficiency": "4 Star"},
+        {"language_name": "C++", "problems_solved": 35, "proficiency": "3 Star"},
+        {"language_name": "JavaScript", "problems_solved": 19, "proficiency": "2 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Intermediate)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Python (Basic)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "SQL (Intermediate)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Data Structures", "skill_level": "Practiced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "SQL", "level_or_stars": "4 Stars", "details": "Silver Badge"},
+        {"title": "30 Days of Code", "level_or_stars": "4 Stars", "details": "Silver Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Intermediate)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Python (Basic)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "SQL (Intermediate)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "264", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "1685", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Earned 5th star in Problem Solving", "category": "Badge"},
+        {"activity": "Completed SQL (Intermediate) Assessment", "category": "Certificate"},
+        {"activity": "Solved 'Sherlock and Anagrams'", "category": "Challenge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "maya_algorithms",
+      "display_name": "Maya Lin",
+      "profile_url": "https://www.hackerrank.com/profile/maya_algorithms",
+      "description": "Competitive programmer and data systems engineer exploring graph algorithms and distributed systems.",
+      "country": "Singapore",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Competitive algorithm programmer demo profile (353 problems solved, 1940 contest rating).",
+      "programming_languages": [
+        {"language_name": "C++", "problems_solved": 195, "proficiency": "5 Star"},
+        {"language_name": "Python", "problems_solved": 110, "proficiency": "5 Star"},
+        {"language_name": "Java", "problems_solved": 48, "proficiency": "3 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Problem Solving (Intermediate)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "C++ (Intermediate)", "skill_level": "Practiced", "verified": false},
+        {"skill_name": "Algorithms", "skill_level": "Advanced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Problem Solving", "level_or_stars": "6 Stars", "details": "Gold Badge"},
+        {"title": "C++", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "10 Days of Statistics", "level_or_stars": "5 Stars", "details": "Gold Badge"}
+      ],
+      "certificates": [
+        {"title": "Problem Solving (Intermediate)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "4", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "1", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "353", "stat_category": "problem_solving"},
+        {"stat_name": "Contest Rating", "stat_value": "1940", "stat_category": "competitions"}
+      ],
+      "recent_activity": [
+        {"activity": "Participated in Weekly Algorithm Sprint", "category": "Contest"},
+        {"activity": "Solved 'Dijkstra: Shortest Reach 2'", "category": "Challenge"}
+      ],
+      "unavailable_fields": []
+    },
+    {
+      "username": "rohan_data_ops",
+      "display_name": "Rohan Verma",
+      "profile_url": "https://www.hackerrank.com/profile/rohan_data_ops",
+      "description": "Analytics engineer practicing SQL, Python automation, and regular expression challenges.",
+      "country": "United Kingdom",
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Analytics engineer demo profile (172 problems solved).",
+      "programming_languages": [
+        {"language_name": "SQL", "problems_solved": 94, "proficiency": "5 Star"},
+        {"language_name": "Python", "problems_solved": 56, "proficiency": "4 Star"},
+        {"language_name": "Bash", "problems_solved": 22, "proficiency": "3 Star"}
+      ],
+      "skills": [
+        {"skill_name": "SQL (Advanced)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Python (Basic)", "skill_level": "Verified", "verified": true},
+        {"skill_name": "Regex", "skill_level": "Practiced", "verified": false}
+      ],
+      "badges": [
+        {"title": "SQL", "level_or_stars": "5 Stars", "details": "Gold Badge"},
+        {"title": "Python", "level_or_stars": "4 Stars", "details": "Silver Badge"},
+        {"title": "Linux Shell", "level_or_stars": "3 Stars", "details": "Bronze Badge"}
+      ],
+      "certificates": [
+        {"title": "SQL (Advanced)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"},
+        {"title": "Python (Basic)", "level_or_stars": "Verified", "details": "HackerRank Skill Certification"}
+      ],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "3", "stat_category": "achievements"},
+        {"stat_name": "Verified Certificates", "stat_value": "2", "stat_category": "achievements"},
+        {"stat_name": "Problems Solved (Listed)", "stat_value": "172", "stat_category": "problem_solving"}
+      ],
+      "recent_activity": [
+        {"activity": "Earned SQL (Advanced) Certificate", "category": "Certificate"}
+      ],
+      "unavailable_fields": ["Contest Rating"]
+    },
+    {
+      "username": "elena_minimal_public",
+      "display_name": "Elena K.",
+      "profile_url": "https://www.hackerrank.com/profile/elena_minimal_public",
+      "description": null,
+      "country": null,
+      "is_sample": true,
+      "source_label": "sample",
+      "data_source_note": "Demonstration profile illustrating partial public visibility where several fields are NULL/unavailable.",
+      "programming_languages": [
+        {"language_name": "Python", "problems_solved": 24, "proficiency": "2 Star"}
+      ],
+      "skills": [
+        {"skill_name": "Python (Basic)", "skill_level": "Practiced", "verified": false}
+      ],
+      "badges": [
+        {"title": "Python", "level_or_stars": "2 Stars", "details": "Bronze Badge"}
+      ],
+      "certificates": [],
+      "statistics": [
+        {"stat_name": "Total Badges", "stat_value": "1", "stat_category": "achievements"}
+      ],
+      "recent_activity": [],
+      "unavailable_fields": ["description", "country", "certificates", "recent_activity", "Contest Rating"]
+    }
+  ]
+}
