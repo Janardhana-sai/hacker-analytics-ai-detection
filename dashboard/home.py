@@ -350,8 +350,9 @@ def _render_interactive_launchpad() -> None:
 
 
 def _render_academic_novelty_banner() -> None:
-    """Render the Academic Novelty & IEEE Literature Comparison download banner."""
-    pdf_path = BASE_DIR / "Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf"
+    """Render the Academic Project Report & Novelty Check download banner."""
+    full_report_path = BASE_DIR / "Hacker_Analytics_Academic_Project_Report.pdf"
+    novelty_pdf_path = BASE_DIR / "Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf"
     st.markdown(
         """
         <div style="
@@ -366,10 +367,10 @@ def _render_academic_novelty_banner() -> None:
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                 <div>
                     <div style="font-size: 1.05rem; font-weight: 700; color: #F8FAFC;">
-                        📄 Academic Novelty Assessment & IEEE Literature Gap Analysis
+                        📄 Academic Project Reports & IEEE Literature Benchmarking (PDF)
                     </div>
                     <div style="font-size: 0.85rem; color: #94A3B8; margin-top: 4px;">
-                        Formal benchmarking report comparing this system against traditional plagiarism tools (MOSS), commercial AI detectors, and 4 published IEEE research papers.
+                        Formal 25-page academic project report (matching college thesis guidelines with architectures, ER diagrams, DFD workflows, algorithms, and experimental results) and IEEE novelty gap analysis report.
                     </div>
                 </div>
             </div>
@@ -377,17 +378,31 @@ def _render_academic_novelty_banner() -> None:
         """,
         unsafe_allow_html=True,
     )
-    if pdf_path.exists():
-        with open(pdf_path, "rb") as f:
-            pdf_bytes = f.read()
-        st.download_button(
-            label="📥 Download Novelty Check & IEEE Literature Comparison Report (PDF)",
-            data=pdf_bytes,
-            file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
-            mime="application/pdf",
-            key="download_novelty_pdf",
-            use_container_width=True,
-        )
+    col_rep1, col_rep2 = st.columns(2)
+    with col_rep1:
+        if full_report_path.exists():
+            with open(full_report_path, "rb") as f1:
+                pdf_bytes1 = f1.read()
+            st.download_button(
+                label="📘 Download Full Academic Report (25 Pages PDF)",
+                data=pdf_bytes1,
+                file_name="Hacker_Analytics_Academic_Project_Report.pdf",
+                mime="application/pdf",
+                key="download_full_academic_report_pdf",
+                use_container_width=True,
+            )
+    with col_rep2:
+        if novelty_pdf_path.exists():
+            with open(novelty_pdf_path, "rb") as f2:
+                pdf_bytes2 = f2.read()
+            st.download_button(
+                label="📑 Download IEEE Novelty Gap Analysis (PDF)",
+                data=pdf_bytes2,
+                file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
+                mime="application/pdf",
+                key="download_novelty_pdf",
+                use_container_width=True,
+            )
 
 
 def render_home_page(db: DatabaseManager) -> None:
