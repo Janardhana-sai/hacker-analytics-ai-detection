@@ -11,7 +11,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from config import APP_DESCRIPTION, APP_SHORT_TITLE, APP_TITLE, APP_VERSION
+from config import APP_DESCRIPTION, APP_SHORT_TITLE, APP_TITLE, APP_VERSION, BASE_DIR
 from database.db_manager import DatabaseManager
 from utils.helpers import format_timestamp
 
@@ -349,6 +349,47 @@ def _render_interactive_launchpad() -> None:
             _navigate_to("AI-Associated Code Pattern Analysis")
 
 
+def _render_academic_novelty_banner() -> None:
+    """Render the Academic Novelty & IEEE Literature Comparison download banner."""
+    pdf_path = BASE_DIR / "Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf"
+    st.markdown(
+        """
+        <div style="
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            border-left: 4px solid #3B82F6;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #F8FAFC;">
+                        📄 Academic Novelty Assessment & IEEE Literature Gap Analysis
+                    </div>
+                    <div style="font-size: 0.85rem; color: #94A3B8; margin-top: 4px;">
+                        Formal benchmarking report comparing this system against traditional plagiarism tools (MOSS), commercial AI detectors, and 4 published IEEE research papers.
+                    </div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if pdf_path.exists():
+        with open(pdf_path, "rb") as f:
+            pdf_bytes = f.read()
+        st.download_button(
+            label="📥 Download Novelty Check & IEEE Literature Comparison Report (PDF)",
+            data=pdf_bytes,
+            file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
+            mime="application/pdf",
+            key="download_novelty_pdf",
+            use_container_width=True,
+        )
+
+
 def render_home_page(db: DatabaseManager) -> None:
     """Render the modernized Home Dashboard overview page with cool graphics."""
     counts = db.get_dashboard_counts()
@@ -367,6 +408,9 @@ def render_home_page(db: DatabaseManager) -> None:
 
     # 5. Interactive Action Launchpad
     _render_interactive_launchpad()
+
+    # 6. Academic Novelty & IEEE Report Download
+    _render_academic_novelty_banner()
 
     st.write("")
     st.divider()
