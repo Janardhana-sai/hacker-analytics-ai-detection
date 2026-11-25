@@ -350,9 +350,12 @@ def _render_interactive_launchpad() -> None:
 
 
 def _render_academic_novelty_banner() -> None:
-    """Render the Academic Project Report & Novelty Check download banner."""
+    """Render the Academic Project Report, Codebase Documentation & Novelty Check download banner."""
     full_report_path = BASE_DIR / "Hacker_Analytics_Academic_Project_Report.pdf"
     novelty_pdf_path = BASE_DIR / "Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf"
+    docx_doc_path = BASE_DIR / "PROJECT_TECHNICAL_REPORT_DOCUMENT.docx"
+    md_doc_path = BASE_DIR / "PROJECT_TECHNICAL_REPORT_DOCUMENT.md"
+
     st.markdown(
         """
         <div style="
@@ -362,15 +365,15 @@ def _render_academic_novelty_banner() -> None:
             border-radius: 12px;
             padding: 18px 24px;
             margin-top: 24px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         ">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                 <div>
                     <div style="font-size: 1.05rem; font-weight: 700; color: #F8FAFC;">
-                        📄 Academic Project Reports & IEEE Literature Benchmarking (PDF)
+                        📄 Academic Project Reports, Codebase Docs & IEEE Benchmarking
                     </div>
                     <div style="font-size: 0.85rem; color: #94A3B8; margin-top: 4px;">
-                        Formal 25-page academic project report (matching college thesis guidelines with architectures, ER diagrams, DFD workflows, algorithms, and experimental results) and IEEE novelty gap analysis report.
+                        Formal 25-page academic project report (VTU/NHCE guidelines), full codebase source documentation (.docx/.md), and IEEE literature gap analysis.
                     </div>
                 </div>
             </div>
@@ -382,27 +385,45 @@ def _render_academic_novelty_banner() -> None:
     with col_rep1:
         if full_report_path.exists():
             with open(full_report_path, "rb") as f1:
-                pdf_bytes1 = f1.read()
-            st.download_button(
-                label="📘 Download Full Academic Report (25 Pages PDF)",
-                data=pdf_bytes1,
-                file_name="Hacker_Analytics_Academic_Project_Report.pdf",
-                mime="application/pdf",
-                key="download_full_academic_report_pdf",
-                use_container_width=True,
-            )
+                st.download_button(
+                    label="📘 Download Full Academic Report (25-Page PDF)",
+                    data=f1.read(),
+                    file_name="Hacker_Analytics_Academic_Project_Report.pdf",
+                    mime="application/pdf",
+                    key="download_full_academic_report_pdf",
+                    use_container_width=True,
+                )
+        if docx_doc_path.exists():
+            with open(docx_doc_path, "rb") as f3:
+                st.download_button(
+                    label="📝 Download Codebase & Pipelines Doc (.DOCX)",
+                    data=f3.read(),
+                    file_name="PROJECT_TECHNICAL_REPORT_DOCUMENT.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    key="download_docx_report_doc",
+                    use_container_width=True,
+                )
     with col_rep2:
         if novelty_pdf_path.exists():
             with open(novelty_pdf_path, "rb") as f2:
-                pdf_bytes2 = f2.read()
-            st.download_button(
-                label="📑 Download IEEE Novelty Gap Analysis (PDF)",
-                data=pdf_bytes2,
-                file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
-                mime="application/pdf",
-                key="download_novelty_pdf",
-                use_container_width=True,
-            )
+                st.download_button(
+                    label="📑 Download IEEE Novelty Gap Analysis (PDF)",
+                    data=f2.read(),
+                    file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
+                    mime="application/pdf",
+                    key="download_novelty_pdf",
+                    use_container_width=True,
+                )
+        if md_doc_path.exists():
+            with open(md_doc_path, "rb") as f4:
+                st.download_button(
+                    label="📄 Download Technical Reference Doc (.MD)",
+                    data=f4.read(),
+                    file_name="PROJECT_TECHNICAL_REPORT_DOCUMENT.md",
+                    mime="text/markdown",
+                    key="download_md_report_doc",
+                    use_container_width=True,
+                )
 
 
 def render_home_page(db: DatabaseManager) -> None:
