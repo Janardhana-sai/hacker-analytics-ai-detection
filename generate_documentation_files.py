@@ -37,10 +37,12 @@ MAIN_FILES = [
     ("detection/ast_analysis.py", BASE_DIR / "detection" / "ast_analysis.py", "Abstract Syntax Tree (AST) Node Vectorizer & Depth Inspector"),
     ("detection/code_similarity.py", BASE_DIR / "detection" / "code_similarity.py", "4-Layer Blended Code Similarity Scoring Engine"),
     ("detection/ai_pattern_analysis.py", BASE_DIR / "detection" / "ai_pattern_analysis.py", "Explainable Heuristic AI Pattern Forensics Engine"),
+    ("detection/code_quality.py", BASE_DIR / "detection" / "code_quality.py", "Software Engineering Metrics, Cyclomatic Complexity V(G), Halstead & Security Audit"),
     ("analytics/coding_analytics.py", BASE_DIR / "analytics" / "coding_analytics.py", "Multi-Timeframe Resampler (3M, 6M, 1Y, 3Y, All) & Charts"),
     ("analytics/profile_analysis.py", BASE_DIR / "analytics" / "profile_analysis.py", "Profile Summary Aggregator & Unexposed Field Detector"),
     ("dashboard/home.py", BASE_DIR / "dashboard" / "home.py", "Home Dashboard, Futuristic Banners & PDF Download Actions"),
     ("dashboard/sidebar.py", BASE_DIR / "dashboard" / "sidebar.py", "Sidebar Navigation & Real-Time Workspace Vault Counters"),
+    ("dashboard/quality_page.py", BASE_DIR / "dashboard" / "quality_page.py", "Code Quality & Security Audit UI with Maintainability Gauge & V(G) Charts"),
 ]
 
 def set_cell_background(cell, fill_hex):

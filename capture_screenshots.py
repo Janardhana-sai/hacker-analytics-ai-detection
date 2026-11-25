@@ -25,7 +25,8 @@ PAGES = [
     ("04_coding_analytics.png", "Coding Analytics"),
     ("05_code_similarity.png", "Code Similarity"),
     ("06_ai_pattern_check.png", "AI Pattern Check"),
-    ("07_analysis_history.png", "Analysis History"),
+    ("07_code_quality_audit.png", "Code Quality"),
+    ("08_analysis_history.png", "Analysis History"),
 ]
 
 def capture_all_pages():

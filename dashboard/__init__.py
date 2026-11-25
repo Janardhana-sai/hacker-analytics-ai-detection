@@ -5,6 +5,7 @@ from dashboard.coding_page import render_coding_page
 from dashboard.history_page import render_history_page
 from dashboard.home import render_home_page
 from dashboard.profile_page import render_profile_page
+from dashboard.quality_page import render_quality_page
 from dashboard.scraper_page import render_scraper_page
 from dashboard.sidebar import PAGES, render_sidebar
 from dashboard.similarity_page import render_similarity_page
@@ -18,6 +19,7 @@ __all__ = [
     "render_coding_page",
     "render_similarity_page",
     "render_ai_detection_page",
+    "render_quality_page",
     "render_history_page",
 ]
 

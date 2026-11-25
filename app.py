@@ -13,6 +13,7 @@ from dashboard.coding_page import render_coding_page
 from dashboard.history_page import render_history_page
 from dashboard.home import render_home_page
 from dashboard.profile_page import render_profile_page
+from dashboard.quality_page import render_quality_page
 from dashboard.scraper_page import render_scraper_page
 from dashboard.sidebar import render_sidebar
 from dashboard.similarity_page import render_similarity_page
@@ -76,6 +77,7 @@ def main() -> None:
         "Coding Performance Analytics": render_coding_page,
         "Source-Code Similarity": render_similarity_page,
         "AI-Associated Code Pattern Analysis": render_ai_detection_page,
+        "Code Quality & Security Audit": render_quality_page,
         "Analysis History": render_history_page,
     }
 

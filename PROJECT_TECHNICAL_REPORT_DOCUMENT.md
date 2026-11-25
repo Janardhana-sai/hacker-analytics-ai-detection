@@ -248,6 +248,7 @@ from dashboard.coding_page import render_coding_page
 from dashboard.history_page import render_history_page
 from dashboard.home import render_home_page
 from dashboard.profile_page import render_profile_page
+from dashboard.quality_page import render_quality_page
 from dashboard.scraper_page import render_scraper_page
 from dashboard.sidebar import render_sidebar
 from dashboard.similarity_page import render_similarity_page
@@ -311,6 +312,7 @@ def main() -> None:
         "Coding Performance Analytics": render_coding_page,
         "Source-Code Similarity": render_similarity_page,
         "AI-Associated Code Pattern Analysis": render_ai_detection_page,
+        "Code Quality & Security Audit": render_quality_page,
         "Analysis History": render_history_page,
     }
 
@@ -3834,6 +3836,303 @@ def analyze_ai_patterns(
 
 ---
 
+### File: `detection/code_quality.py`
+**Role:** Software Engineering Metrics, Cyclomatic Complexity V(G), Halstead & Security Audit  
+**Location:** `file:///C:/Users/janar/OneDrive/Desktop/hacker-analytics-ai-detection/detection/code_quality.py`
+
+```python
+"""
+Module: Code Quality, Cyclomatic Complexity, Halstead Metrics & Static Security Audit.
+Performs AST-driven software engineering metrics calculation, maintainability indexing,
+and security vulnerability pattern detection on Python source code.
+"""
+
+from __future__ import annotations
+
+import ast
+import math
+import re
+from typing import Any
+
+
+class CodeQualityAuditor(ast.NodeVisitor):
+    """AST visitor to compute McCabe's Cyclomatic Complexity and detect code smells."""
+
+    DECISION_NODES = (
+        ast.If,
+        ast.While,
+        ast.For,
+        ast.AsyncFor,
+        ast.ExceptHandler,
+        ast.With,
+        ast.AsyncWith,
+        ast.Assert,
+    )
+
+    COMPREHENSION_NODES = (
+        ast.ListComp,
+        ast.SetComp,
+        ast.DictComp,
+        ast.GeneratorExp,
+    )
+
+    DANGEROUS_FUNCTIONS = {
+        "eval": "High risk of arbitrary code execution.",
+        "exec": "Dynamic code execution can lead to severe security compromise.",
+        "os.system": "Command injection vulnerability. Prefer subprocess with shell=False.",
+        "subprocess.Popen": "Verify shell=False to prevent shell command injection.",
+        "__import__": "Dynamic import manipulation vulnerability.",
+        "pickle.loads": "Insecure deserialization risk from untrusted input.",
+    }
+
+    def __init__(self) -> None:
+        self.overall_complexity: int = 1
+        self.functions: list[dict[str, Any]] = []
+        self.security_issues: list[dict[str, Any]] = []
+        self.code_smells: list[dict[str, Any]] = []
+        self.total_operators: int = 0
+        self.total_operands: int = 0
+        self.unique_operators: set[str] = set()
+        self.unique_operands: set[str] = set()
+        self.max_nesting_depth: int = 0
+        self._current_nesting: int = 0
+
+    def generic_visit(self, node: ast.AST) -> None:
+        is_nest = isinstance(node, (ast.If, ast.While, ast.For, ast.FunctionDef, ast.ClassDef, ast.Try))
+        if is_nest:
+            self._current_nesting += 1
+            if self._current_nesting > self.max_nesting_depth:
+                self.max_nesting_depth = self._current_nesting
+
+        # McCabe Decision points
+        if isinstance(node, self.DECISION_NODES):
+            self.overall_complexity += 1
+        elif isinstance(node, ast.BoolOp):
+            # and / or add complexity
+            self.overall_complexity += len(node.values) - 1
+        elif isinstance(node, self.COMPREHENSION_NODES):
+            self.overall_complexity += len(node.generators)
+
+        # Halstead Operators
+        if isinstance(node, (ast.Add, ast.Sub, ast.Mult, ast.Div, ast.FloorDiv, ast.Mod, ast.Pow)):
+            self.total_operators += 1
+            self.unique_operators.add(type(node).__name__)
+        elif isinstance(node, (ast.Eq, ast.NotEq, ast.Lt, ast.LtE, ast.Gt, ast.GtE, ast.Is, ast.IsNot, ast.In, ast.NotIn)):
+            self.total_operators += 1
+            self.unique_operators.add(type(node).__name__)
+
+        # Halstead Operands
+        if isinstance(node, ast.Name):
+            self.total_operands += 1
+            self.unique_operands.add(node.id)
+        elif isinstance(node, ast.Constant):
+            self.total_operands += 1
+            self.unique_operands.add(str(node.value))
+
+        super().generic_visit(node)
+
+        if is_nest:
+            self._current_nesting -= 1
+
+    def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
+        self._inspect_function(node, is_async=False)
+        self.generic_visit(node)
+
+    def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
+        self._inspect_function(node, is_async=True)
+        self.generic_visit(node)
+
+    def _inspect_function(self, node: ast.FunctionDef | ast.AsyncFunctionDef, is_async: bool) -> None:
+        fn_complexity = 1
+        for sub in ast.walk(node):
+            if sub is not node and isinstance(sub, self.DECISION_NODES):
+                fn_complexity += 1
+            elif isinstance(sub, ast.BoolOp):
+                fn_complexity += len(sub.values) - 1
+            elif isinstance(sub, self.COMPREHENSION_NODES):
+                fn_complexity += len(sub.generators)
+
+        # Lines count
+        lines_count = getattr(node, "end_lineno", node.lineno) - node.lineno + 1
+
+        self.functions.append(
+            {
+                "name": node.name,
+                "line_number": node.lineno,
+                "lines_count": lines_count,
+                "complexity": fn_complexity,
+                "args_count": len(node.args.args),
+                "is_async": is_async,
+                "has_docstring": ast.get_docstring(node) is not None,
+                "risk_rating": "Low" if fn_complexity <= 5 else ("Medium" if fn_complexity <= 10 else "High"),
+            }
+        )
+
+    def visit_Call(self, node: ast.Call) -> None:
+        fn_name = ""
+        if isinstance(node.func, ast.Name):
+            fn_name = node.func.id
+        elif isinstance(node.func, ast.Attribute):
+            if isinstance(node.func.value, ast.Name):
+                fn_name = f"{node.func.value.id}.{node.func.attr}"
+            else:
+                fn_name = node.func.attr
+
+        if fn_name in self.DANGEROUS_FUNCTIONS:
+            self.security_issues.append(
+                {
+                    "type": "Dangerous Function Call",
+                    "target": fn_name,
+                    "line": getattr(node, "lineno", 1),
+                    "severity": "High" if "eval" in fn_name or "exec" in fn_name else "Medium",
+                    "description": self.DANGEROUS_FUNCTIONS[fn_name],
+                }
+            )
+        self.generic_visit(node)
+
+    def visit_ExceptHandler(self, node: ast.ExceptHandler) -> None:
+        if node.type is None:
+            self.code_smells.append(
+                {
+                    "type": "Bare Except Clause",
+                    "line": getattr(node, "lineno", 1),
+                    "severity": "Medium",
+                    "description": "Catching all exceptions with bare 'except:' masks KeyboardInterrupt and SystemExit.",
+                }
+            )
+        self.generic_visit(node)
+
+
+def audit_code_quality(source_code: str) -> dict[str, Any]:
+    """
+    Perform deep static analysis, McCabe Cyclomatic Complexity, Halstead volume,
+    Maintainability Index (MI), and security risk detection.
+    """
+    if not source_code or not source_code.strip():
+        return {
+            "syntax_valid": False,
+            "error_message": "Source code is empty.",
+            "maintainability_index": 0.0,
+            "overall_complexity": 0,
+            "functions": [],
+            "security_issues": [],
+            "code_smells": [],
+            "halstead": {},
+        }
+
+    try:
+        tree = ast.parse(source_code)
+    except SyntaxError as e:
+        return {
+            "syntax_valid": False,
+            "error_message": f"Syntax error at line {e.lineno}: {e.msg}",
+            "maintainability_index": 0.0,
+            "overall_complexity": 0,
+            "functions": [],
+            "security_issues": [],
+            "code_smells": [],
+            "halstead": {},
+        }
+
+    auditor = CodeQualityAuditor()
+    auditor.visit(tree)
+
+    # Line counts
+    lines = source_code.splitlines()
+    loc = len(lines)
+    sloc = len([l for l in lines if l.strip() and not l.strip().startswith("#")])
+    blank_lines = len([l for l in lines if not l.strip()])
+    comment_lines = len([l for l in lines if l.strip().startswith("#")])
+
+    # Halstead Metrics
+    n1 = max(1, len(auditor.unique_operators))
+    n2 = max(1, len(auditor.unique_operands))
+    N1 = max(1, auditor.total_operators)
+    N2 = max(1, auditor.total_operands)
+
+    vocabulary = n1 + n2
+    length = N1 + N2
+    # Volume V = N * log2(n)
+    volume = length * math.log2(vocabulary) if vocabulary > 1 else 10.0
+    difficulty = (n1 / 2.0) * (N2 / float(n2)) if n2 > 0 else 1.0
+    effort = difficulty * volume
+
+    # Maintainability Index (Coleman-Oman standard formula normalized 0-100)
+    # MI = 171 - 5.2 * ln(V) - 0.23 * G - 16.2 * ln(LOC)
+    safe_loc = max(1, sloc)
+    safe_vol = max(1.0, volume)
+    raw_mi = 171.0 - 5.2 * math.log(safe_vol) - 0.23 * auditor.overall_complexity - 16.2 * math.log(safe_loc)
+    mi_score = max(0.0, min(100.0, (raw_mi * 100.0) / 171.0))
+
+    # Detect hardcoded secret patterns
+    secret_pattern = re.compile(
+        r"(?i)(api[_-]?key|secret|password|passwd|auth[_-]?token|bearer)\s*=\s*['\"][A-Za-z0-9_\-]{8,}['\"]"
+    )
+    for idx, line in enumerate(lines, start=1):
+        if secret_pattern.search(line):
+            auditor.security_issues.append(
+                {
+                    "type": "Possible Hardcoded Credential / Secret",
+                    "target": "Secret String",
+                    "line": idx,
+                    "severity": "High",
+                    "description": "Detected hardcoded key or password token. Use environment variables instead.",
+                }
+            )
+
+    # Check excessive nesting
+    if auditor.max_nesting_depth > 4:
+        auditor.code_smells.append(
+            {
+                "type": "Excessive Control Nesting",
+                "line": 1,
+                "severity": "Low",
+                "description": f"Maximum control flow nesting depth is {auditor.max_nesting_depth} (> 4). Consider early returns or helper functions.",
+            }
+        )
+
+    # Maintainability Grade
+    if mi_score >= 80.0:
+        mi_grade = "A (Highly Maintainable)"
+        mi_color = "#10B981"
+    elif mi_score >= 60.0:
+        mi_grade = "B (Moderately Maintainable)"
+        mi_color = "#3B82F6"
+    elif mi_score >= 40.0:
+        mi_grade = "C (Needs Refactoring)"
+        mi_color = "#F59E0B"
+    else:
+        mi_grade = "D (Difficult to Maintain)"
+        mi_color = "#EF4444"
+
+    return {
+        "syntax_valid": True,
+        "error_message": None,
+        "maintainability_index": round(mi_score, 1),
+        "maintainability_grade": mi_grade,
+        "maintainability_color": mi_color,
+        "overall_complexity": auditor.overall_complexity,
+        "max_nesting_depth": auditor.max_nesting_depth,
+        "lines_of_code": loc,
+        "source_lines": sloc,
+        "comment_lines": comment_lines,
+        "blank_lines": blank_lines,
+        "functions": auditor.functions,
+        "security_issues": auditor.security_issues,
+        "code_smells": auditor.code_smells,
+        "halstead": {
+            "vocabulary": vocabulary,
+            "length": length,
+            "volume": round(volume, 1),
+            "difficulty": round(difficulty, 1),
+            "effort": round(effort, 1),
+        },
+    }
+
+```
+
+---
+
 ### File: `analytics/coding_analytics.py`
 **Role:** Multi-Timeframe Resampler (3M, 6M, 1Y, 3Y, All) & Charts  
 **Location:** `file:///C:/Users/janar/OneDrive/Desktop/hacker-analytics-ai-detection/analytics/coding_analytics.py`
@@ -4825,11 +5124,12 @@ def _render_interactive_launchpad() -> None:
 
 
 def _render_academic_novelty_banner() -> None:
-    """Render the Academic Novelty & IEEE Literature Comparison download banner."""
-    pdf_path = BASE_DIR / "Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf"
-    """Render the Academic Project Report & Novelty Check download banner."""
+    """Render the Academic Project Report, Codebase Documentation & Novelty Check download banner."""
     full_report_path = BASE_DIR / "Hacker_Analytics_Academic_Project_Report.pdf"
     novelty_pdf_path = BASE_DIR / "Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf"
+    docx_doc_path = BASE_DIR / "PROJECT_TECHNICAL_REPORT_DOCUMENT.docx"
+    md_doc_path = BASE_DIR / "PROJECT_TECHNICAL_REPORT_DOCUMENT.md"
+
     st.markdown(
         """
         <div style="
@@ -4839,17 +5139,15 @@ def _render_academic_novelty_banner() -> None:
             border-radius: 12px;
             padding: 18px 24px;
             margin-top: 24px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         ">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                 <div>
                     <div style="font-size: 1.05rem; font-weight: 700; color: #F8FAFC;">
-                        📄 Academic Novelty Assessment & IEEE Literature Gap Analysis
-                        📄 Academic Project Reports & IEEE Literature Benchmarking (PDF)
+                        📄 Academic Project Reports, Codebase Docs & IEEE Benchmarking
                     </div>
                     <div style="font-size: 0.85rem; color: #94A3B8; margin-top: 4px;">
-                        Formal benchmarking report comparing this system against traditional plagiarism tools (MOSS), commercial AI detectors, and 4 published IEEE research papers.
-                        Formal 25-page academic project report (matching college thesis guidelines with architectures, ER diagrams, DFD workflows, algorithms, and experimental results) and IEEE novelty gap analysis report.
+                        Formal 25-page academic project report (VTU/NHCE guidelines), full codebase source documentation (.docx/.md), and IEEE literature gap analysis.
                     </div>
                 </div>
             </div>
@@ -4857,42 +5155,49 @@ def _render_academic_novelty_banner() -> None:
         """,
         unsafe_allow_html=True,
     )
-    if pdf_path.exists():
-        with open(pdf_path, "rb") as f:
-            pdf_bytes = f.read()
-        st.download_button(
-            label="📥 Download Novelty Check & IEEE Literature Comparison Report (PDF)",
-            data=pdf_bytes,
-            file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
-            mime="application/pdf",
-            key="download_novelty_pdf",
-            use_container_width=True,
-        )
     col_rep1, col_rep2 = st.columns(2)
     with col_rep1:
         if full_report_path.exists():
             with open(full_report_path, "rb") as f1:
-                pdf_bytes1 = f1.read()
-            st.download_button(
-                label="📘 Download Full Academic Report (25 Pages PDF)",
-                data=pdf_bytes1,
-                file_name="Hacker_Analytics_Academic_Project_Report.pdf",
-                mime="application/pdf",
-                key="download_full_academic_report_pdf",
-                use_container_width=True,
-            )
+                st.download_button(
+                    label="📘 Download Full Academic Report (25-Page PDF)",
+                    data=f1.read(),
+                    file_name="Hacker_Analytics_Academic_Project_Report.pdf",
+                    mime="application/pdf",
+                    key="download_full_academic_report_pdf",
+                    use_container_width=True,
+                )
+        if docx_doc_path.exists():
+            with open(docx_doc_path, "rb") as f3:
+                st.download_button(
+                    label="📝 Download Codebase & Pipelines Doc (.DOCX)",
+                    data=f3.read(),
+                    file_name="PROJECT_TECHNICAL_REPORT_DOCUMENT.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    key="download_docx_report_doc",
+                    use_container_width=True,
+                )
     with col_rep2:
         if novelty_pdf_path.exists():
             with open(novelty_pdf_path, "rb") as f2:
-                pdf_bytes2 = f2.read()
-            st.download_button(
-                label="📑 Download IEEE Novelty Gap Analysis (PDF)",
-                data=pdf_bytes2,
-                file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
-                mime="application/pdf",
-                key="download_novelty_pdf",
-                use_container_width=True,
-            )
+                st.download_button(
+                    label="📑 Download IEEE Novelty Gap Analysis (PDF)",
+                    data=f2.read(),
+                    file_name="Hacker_Analytics_Project_Novelty_Check_and_IEEE_Comparison.pdf",
+                    mime="application/pdf",
+                    key="download_novelty_pdf",
+                    use_container_width=True,
+                )
+        if md_doc_path.exists():
+            with open(md_doc_path, "rb") as f4:
+                st.download_button(
+                    label="📄 Download Technical Reference Doc (.MD)",
+                    data=f4.read(),
+                    file_name="PROJECT_TECHNICAL_REPORT_DOCUMENT.md",
+                    mime="text/markdown",
+                    key="download_md_report_doc",
+                    use_container_width=True,
+                )
 
 
 def render_home_page(db: DatabaseManager) -> None:
@@ -4989,6 +5294,7 @@ PAGES: list[str] = [
     "Coding Performance Analytics",
     "Source-Code Similarity",
     "AI-Associated Code Pattern Analysis",
+    "Code Quality & Security Audit",
     "Analysis History",
 ]
 
@@ -4999,6 +5305,7 @@ PAGE_LABELS: dict[str, str] = {
     "Coding Performance Analytics": "📈 Coding Analytics",
     "Source-Code Similarity": "📐 Code Similarity",
     "AI-Associated Code Pattern Analysis": "🤖 AI Pattern Check",
+    "Code Quality & Security Audit": "🛡️ Code Quality & Audit",
     "Analysis History": "📋 Analysis History",
 }
 
@@ -5054,6 +5361,230 @@ def render_sidebar(db: DatabaseManager) -> str:
         )
 
     return st.session_state["current_page"]
+
+```
+
+---
+
+### File: `dashboard/quality_page.py`
+**Role:** Code Quality & Security Audit UI with Maintainability Gauge & V(G) Charts  
+**Location:** `file:///C:/Users/janar/OneDrive/Desktop/hacker-analytics-ai-detection/dashboard/quality_page.py`
+
+```python
+"""
+Page 8: Code Quality, Cyclomatic Complexity & Static Security Audit.
+Calculates McCabe Cyclomatic Complexity, Maintainability Index (MI), Halstead Software Metrics,
+and audits for security vulnerabilities and code smells.
+"""
+
+from __future__ import annotations
+
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import streamlit as st
+
+from config import SAMPLE_DATA_DIR
+from database.db_manager import DatabaseManager
+from detection.code_quality import audit_code_quality
+from utils.validators import validate_python_code
+
+
+def _get_benchmark_files() -> list[tuple[str, str]]:
+    files: list[tuple[str, str]] = []
+    if SAMPLE_DATA_DIR.exists():
+        for p in sorted(SAMPLE_DATA_DIR.glob("*.py")):
+            try:
+                files.append((p.name, p.read_text(encoding="utf-8")))
+            except OSError:
+                pass
+    return files
+
+
+def render_quality_page(db: DatabaseManager) -> None:
+    """Render the Code Quality & Security Audit page."""
+    st.markdown(
+        """
+        <div style="
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(13, 148, 136, 0.35) 50%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid rgba(20, 184, 166, 0.35);
+            border-radius: 16px;
+            padding: 22px 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+        ">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.4); padding: 3px 12px; border-radius: 9999px; margin-bottom: 8px;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: #5EEAD4; letter-spacing: 0.04em;">NEW MODULE • SOFTWARE ENGINEERING AUDIT</span>
+            </div>
+            <h1 style="margin: 0; font-size: 1.85rem; font-weight: 800; background: linear-gradient(90deg, #FFFFFF, #5EEAD4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🛡️ Code Quality, Cyclomatic Complexity & Security Audit
+            </h1>
+            <p style="color: #94A3B8; font-size: 0.92rem; margin: 4px 0 0 0;">
+                Calculates McCabe's Cyclomatic Complexity V(G), Coleman-Oman Maintainability Index (MI), Halstead Software Science, and static security risk patterns.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    benchmarks = _get_benchmark_files()
+    tab_bench, tab_custom = st.tabs(["🧪 Select Benchmark Python File", "📝 Paste or Upload Custom Code"])
+
+    active_code: str = ""
+    active_filename: str = "custom_code.py"
+
+    with tab_bench:
+        if benchmarks:
+            bench_names = [b[0] for b in benchmarks]
+            selected_bench = st.selectbox(
+                "Choose Benchmark File to Audit",
+                options=bench_names,
+                index=0,
+            )
+            for name, code in benchmarks:
+                if name == selected_bench:
+                    active_code = code
+                    active_filename = name
+                    break
+
+            with st.expander("Preview Selected Source Code", expanded=False):
+                st.code(active_code, language="python")
+
+    with tab_custom:
+        custom_upload = st.file_uploader("Upload Python (.py) File", type=["py"], key="quality_file_uploader")
+        if custom_upload:
+            active_code = custom_upload.getvalue().decode("utf-8", errors="replace")
+            active_filename = custom_upload.name
+        else:
+            pasted = st.text_area(
+                "Or Paste Python Code",
+                height=180,
+                placeholder="def example():\n    pass",
+                key="quality_pasted_code",
+            )
+            if pasted.strip():
+                active_code = pasted
+                active_filename = "pasted_snippet.py"
+
+    if not active_code.strip():
+        st.info("Select a benchmark file or paste code above to run the Code Quality & Security Audit.")
+        return
+
+    st.write("")
+    if st.button("🚀 Run Deep Code Quality & Security Audit", type="primary", use_container_width=True):
+        st.session_state["quality_audit_run"] = True
+
+    if not st.session_state.get("quality_audit_run", True):
+        return
+
+    report = audit_code_quality(active_code)
+
+    if not report["syntax_valid"]:
+        st.error(f"❌ Syntax Error: {report['error_message']}")
+        return
+
+    st.divider()
+    st.subheader(f"📊 Audit Results for `{active_filename}`")
+
+    # 1. KPI Cards
+    k1, k2, k3, k4, k5 = st.columns(5)
+    with k1:
+        st.metric("Maintainability Index", f"{report['maintainability_index']}/100", report['maintainability_grade'])
+    with k2:
+        st.metric("Total Complexity V(G)", str(report['overall_complexity']))
+    with k3:
+        st.metric("Lines of Code (LOC)", str(report['lines_of_code']), f"{report['source_lines']} SLOC")
+    with k4:
+        st.metric("Max Nesting Depth", str(report['max_nesting_depth']), "Levels")
+    with k5:
+        issues_count = len(report['security_issues']) + len(report['code_smells'])
+        st.metric("Detected Issues", str(issues_count), "Alerts" if issues_count > 0 else "Clean")
+
+    # 2. Visual Charts: Maintainability Gauge & Complexity Distribution
+    c_chart1, c_chart2 = st.columns([1, 1.3])
+
+    with c_chart1:
+        gauge_fig = go.Figure(
+            go.Indicator(
+                mode="gauge+number",
+                value=report["maintainability_index"],
+                title={"text": "Maintainability Score (MI)", "font": {"size": 15}},
+                gauge={
+                    "axis": {"range": [0, 100]},
+                    "bar": {"color": report["maintainability_color"]},
+                    "steps": [
+                        {"range": [0, 40], "color": "rgba(239, 68, 68, 0.2)"},
+                        {"range": [40, 60], "color": "rgba(245, 158, 11, 0.2)"},
+                        {"range": [60, 80], "color": "rgba(59, 130, 246, 0.2)"},
+                        {"range": [80, 100], "color": "rgba(16, 185, 129, 0.2)"},
+                    ],
+                },
+            )
+        )
+        gauge_fig.update_layout(height=280, margin=dict(t=30, b=10, l=20, r=20))
+        st.plotly_chart(gauge_fig, width="stretch", key="quality_mi_gauge")
+
+    with c_chart2:
+        if report["functions"]:
+            fn_df = pd.DataFrame(report["functions"])
+            bar_fig = px.bar(
+                fn_df,
+                x="name",
+                y="complexity",
+                color="risk_rating",
+                color_discrete_map={"Low": "#10B981", "Medium": "#F59E0B", "High": "#EF4444"},
+                title="Function-Level Cyclomatic Complexity V(G)",
+                labels={"name": "Function Name", "complexity": "Complexity V(G)"},
+            )
+            bar_fig.add_hline(y=5, line_dash="dot", line_color="#F59E0B", annotation_text="Moderate Risk (5)")
+            bar_fig.add_hline(y=10, line_dash="dash", line_color="#EF4444", annotation_text="High Risk (10)")
+            bar_fig.update_layout(height=280, margin=dict(t=35, b=20, l=20, r=20))
+            st.plotly_chart(bar_fig, width="stretch", key="quality_fn_complexity_chart")
+        else:
+            st.info("No standalone function definitions detected in this module.")
+
+    # 3. Security & Code Smells Alerts
+    st.subheader("🚨 Security & Static Code Smell Alerts")
+    sec_col1, sec_col2 = st.columns(2)
+
+    with sec_col1:
+        st.markdown("#### Security Vulnerability Checks")
+        if report["security_issues"]:
+            for issue in report["security_issues"]:
+                st.error(
+                    f"**[{issue['severity']}] {issue['type']}** at Line {issue['line']}:  \n"
+                    f"`{issue['target']}` — {issue['description']}"
+                )
+        else:
+            st.success("✅ No dangerous functions (eval, exec, command injection, insecure deserialization) detected.")
+
+    with sec_col2:
+        st.markdown("#### Anti-Patterns & Code Smells")
+        if report["code_smells"]:
+            for smell in report["code_smells"]:
+                st.warning(
+                    f"**[{smell['severity']}] {smell['type']}** at Line {smell['line']}:  \n"
+                    f"{smell['description']}"
+                )
+        else:
+            st.success("✅ No bare except clauses or excessive nesting anti-patterns detected.")
+
+    # 4. Halstead Software Science Breakdown
+    st.subheader("📐 Halstead Software Science Metrics")
+    h = report["halstead"]
+    hc1, hc2, hc3, hc4 = st.columns(4)
+    hc1.metric("Vocabulary (n)", str(h.get("vocabulary", 0)))
+    hc2.metric("Program Length (N)", str(h.get("length", 0)))
+    hc3.metric("Volume (V)", f"{h.get('volume', 0)} bits")
+    hc4.metric("Difficulty (D)", str(h.get("difficulty", 0)))
+
+    # 5. Functions Table
+    if report["functions"]:
+        st.subheader("📋 Function-Level Granular Breakdown")
+        f_display = pd.DataFrame(report["functions"])[
+            ["name", "line_number", "lines_count", "complexity", "risk_rating", "has_docstring", "args_count"]
+        ]
+        st.dataframe(f_display, use_container_width=True, hide_index=True)
 
 ```
 

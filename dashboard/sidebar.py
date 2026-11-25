@@ -16,6 +16,7 @@ PAGES: list[str] = [
     "Coding Performance Analytics",
     "Source-Code Similarity",
     "AI-Associated Code Pattern Analysis",
+    "Code Quality & Security Audit",
     "Analysis History",
 ]
 
@@ -26,6 +27,7 @@ PAGE_LABELS: dict[str, str] = {
     "Coding Performance Analytics": "📈 Coding Analytics",
     "Source-Code Similarity": "📐 Code Similarity",
     "AI-Associated Code Pattern Analysis": "🤖 AI Pattern Check",
+    "Code Quality & Security Audit": "🛡️ Code Quality & Audit",
     "Analysis History": "📋 Analysis History",
 }
 
